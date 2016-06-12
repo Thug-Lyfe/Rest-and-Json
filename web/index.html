@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">   
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+        <script src='bower_components/angular-animate/angular-animate.min.js'></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.9/ng-table.min.css" >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.9/ng-table.js"></script>
+        <script src="http://exam-mb1337.rhcloud.com/Rest_and_Json/api/addresses/100/fname,lname,street,city?callback=myData" ></script>
+        <script src="http://exam-mb1337.rhcloud.com/Rest_and_Json/api/addresses/100/fname,lname?callback=myData" ></script>
+        <script src="http://exam-mb1337.rhcloud.com/Rest_and_Json/api/addresses/10/fname,lname,city?callback=myData" ></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myAppCtrl">
+        <h2>People creator</h2>
+        <form class='form-horizontal'>
+            <div class='form-inline'>
+                <input class="form-control" ng-model='Amount' type="number" class="form-control" placeholder="Amount"> 
+                <input class="form-control" ng-model='Props' type="text" class="form-control" placeholder="Props">
+                <button class="form-control" ng-click="getTests()">get people</button>
+                <button class="form-control" ng-click="getTestsLocal()">get people (local)</button>
+            </div>
+        </form>
+
+
+        <div>
+            <table ng-table="tableParams" class="table" show-filter="true">
+                <tr ng-repeat="person in $data">
+                    <td style="width: 70%" title="'First Name'" filter="{ fname: 'text'}" sortable="'fname'">
+                        {{person.fname}}</td>
+                    <td style="width: 15%" title="'Last Name'" filter="{ lname: 'text'}" sortable="'lname'">
+                        {{person.lname}}</td>
+                    <td style="width: 15%" title="'Street'" filter="{ street: 'text'}" sortable="'street'">
+                        {{person.street}}</td>
+                    <td style="width: 15%" title="'city'" filter="{ city: 'text'}" sortable="'city'">
+                        {{person.city}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
