@@ -35,8 +35,14 @@ public class GenericResource {
     public GenericResource() {
     gson = new GsonBuilder().setPrettyPrinting().create();
     }
-
    
+    
+    @GET
+    @Path("10/fname,lname,city?callback=myData")
+    @Produces("application/Json")
+    public String getJson() {
+        return gson.toJson(getData(10,"fname,lname,city"));
+    }
     
     @GET
     @Path("{number}/{props}")
